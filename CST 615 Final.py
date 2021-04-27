@@ -256,3 +256,4 @@ rkb_rev = rkb[::-1]
 rk_rev = rk[::-1]
 plainText = binHex(encrypt(ciphered_text, rkb_rev, rk_rev))
 print("Plaintext: ",plainText)
+input("Press ENTER to close the program")

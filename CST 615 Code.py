@@ -1,81 +1,6 @@
 # CST 615 Group 7: Encrypting and Decrypting using DES
 # Code written by Terin S. Housey
 
-# Hexadecimals to Binary Form and Binary to Hexadecimal Form
-# Source https://www.rapidtables.com/convert/number/hex-to-binary.html
-
-def hexBin(s):
-    convert2Bin = {'0' : "0000", 
-          '1' : "0001",
-          '2' : "0010", 
-          '3' : "0011",
-          '4' : "0100",
-          '5' : "0101", 
-          '6' : "0110",
-          '7' : "0111", 
-          '8' : "1000",
-          '9' : "1001", 
-          'A' : "1010",
-          'B' : "1011", 
-          'C' : "1100",
-          'D' : "1101", 
-          'E' : "1110",
-          'F' : "1111" }
-    resultBin = ""
-    for i in range(len(s)):
-        resultBin = resultBin + convert2Bin[s[i]]
-    return resultBin
-      
-def binHex(s):
-    convert2Bin = {"0000" : '0', 
-          "0001" : '1',
-          "0010" : '2', 
-          "0011" : '3',
-          "0100" : '4',
-          "0101" : '5', 
-          "0110" : '6',
-          "0111" : '7', 
-          "1000" : '8',
-          "1001" : '9', 
-          "1010" : 'A',
-          "1011" : 'B', 
-          "1100" : 'C',
-          "1101" : 'D', 
-          "1110" : 'E',
-          "1111" : 'F' }
-    resultHex = ""
-    for i in range(0,len(s),4):
-        bh = ""
-        bh = bh + s[i]
-        bh = bh + s[i + 1] 
-        bh = bh + s[i + 2] 
-        bh = bh + s[i + 3] 
-        resultHex = resultHex + convert2Bin[bh]
-    return resultHex
-  
-# Binary To Decimal Conversion
-# Source https://www.geeksforgeeks.org/binary-decimal-vice-versa-python/
-
-def binDec(binary): 
-    bin1 = binary 
-    bide, i, n = 0, 0, 0
-    while(binary != 0): 
-        deci = binary%10
-        bide = bide + deci * pow(2, i) 
-        binary = binary//10
-        i += 1
-    return bide
-  
-def decBin(num): 
-    resultBin = bin(num).replace("0b", "")
-    if(len(resultBin)%4 != 0):
-        div = len(resultBin) / 4
-        div = int(div)
-        counter =(4 * (div + 1)) - len(resultBin) 
-        for i in range(0, counter):
-            resultBin = '0' + resultBin
-    return resultBin
-
 # Table(s) 
 # Source https://csrc.nist.gov/csrc/media/publications/fips/46/3/archive/1999-10-25/documents/fips46-3.pdf
 
@@ -176,40 +101,99 @@ permuted_2 = [14, 17, 11, 24, 1, 5,
             44, 49, 39, 56, 34, 53, 
             46, 42, 50, 36, 29, 32 ]
 
+#Get Input
+print("CST 615 Group 7: Encrypting and Decrypting using DES")
+plainText = input('Please enter your plaintext: ').upper()
+key = input('Please enter your key: ').upper()
+print("\n")
+
+# Hexadecimals to Binary Form and Binary to Hexadecimal Form
+# Source https://www.rapidtables.com/convert/number/hex-to-binary.html
+
+def hexBin(a):
+    convert2Bin = {'A':"1010", 'B':"1011", 
+          'C':"1100", 'D':"1101", 'E':"1110", 'F':"1111",
+          '0':"0000", '1':"0001", '2':"0010", 
+          '3':"0011", '4':"0100", '5':"0101", 
+          '6':"0110", '7':"0111", '8':"1000", '9':"1001"}
+    resultBin = ""
+    for i in range(len(a)):
+        resultBin = resultBin + convert2Bin[a[i]]
+    return resultBin
+
+def binHex(b):
+  convert2Bin = {"1010":'A', "1011":'B', "1100":'C',
+    "1101":'D', "1110":'E', "1111":'F',
+    "0000":'0', "0001":'1', "0010":'2', 
+    "0011":'3', "0100":'4', "0101":'5', 
+    "0110":'6', "0111":'7', "1000":'8', "1001":'9'}
+  resultHex = ""
+  for i in range(0,len(b),4):
+        bin2hex = ""
+        bin2hex = bin2hex + b[i]
+        bin2hex = bin2hex + b[i + 1] 
+        bin2hex = bin2hex + b[i + 2] 
+        bin2hex = bin2hex + b[i + 3] 
+        resultHex = resultHex + convert2Bin[bin2hex]
+  return resultHex
+
+# Binary To Decimal Conversion
+# Source https://www.geeksforgeeks.org/binary-decimal-vice-versa-python/
+
+def binDec(binary): 
+    bin1 = binary 
+    bide, i, n = 0, 0, 0
+    while(binary != 0): 
+        deci = binary%10
+        bide = bide + deci * pow(2, i) 
+        binary = binary//10
+        i += 1
+    return bide
+
+def decBin(num): 
+    resultBin = bin(num).replace("0b", "")
+    if(len(resultBin)%4 != 0):
+        div = len(resultBin) / 4
+        div = int(div)
+        counter =(4 * (div + 1)) - len(resultBin) 
+        for i in range(0, counter):
+            resultBin = '0' + resultBin
+    return resultBin
+
 # Permutation Process
-def permutation(k, arr, n):
+def permutation(c, arr, d):
     permutate = ""
-    for i in range(0, n):
-        permutate = permutate + k[arr[i] - 1]
+    for i in range(0, d):
+        permutate = permutate + c[arr[i] - 1]
     return permutate
   
-def leftShift(k, n_shifts):
+def leftShift(e, shifts):
     s = ""
-    for i in range(n_shifts):
-        for j in range(1,len(k)):
-            s = s + k[j]
-        s = s + k[0]
-        k = s
+    for i in range(shifts):
+        for f in range(1,len(e)):
+            s = s + e[f]
+        s = s + e[0]
+        e = s
         s = "" 
-    return k
+    return e
   
-def xor(a, b):
-    ans = ""
-    for i in range(len(a)):
-        if a[i] == b[i]:
-            ans = ans + "0"
+def xor(f, g):
+    h = ""
+    for i in range(len(f)):
+        if f[i] == g[i]:
+            h = h + "0"
         else:
-            ans = ans + "1"
-    return ans
+            h = h + "1"
+    return h
   
-def encrypt(pt, rkb, rk):
+def encryption(pt, sub, rnd):
     pt = hexBin(pt)
     pt = permutation(pt, int_perm, 64)
     swap_left = pt[0:32]
     swap_right = pt[32:64]
     for i in range(0, 16):
         expand = permutation(swap_right, e_bit_selection, 48)
-        xor_x = xor(expand, rkb[i])
+        xor_x = xor(expand, sub[i])
         sbox_string = ""
         for j in range(0, 8):
             row = binDec(int(xor_x[j * 6] + xor_x[j * 6 + 5]))
@@ -226,34 +210,28 @@ def encrypt(pt, rkb, rk):
     cipher_text = permutation(combine, f_perm, 64)
     return cipher_text
 
-#Get Input
-print("CST 615 Group 7: Encrypting and Decrypting using DES")
-plainText = input('Please enter your plaintext: ').upper()
-key = input('Please enter your key: ').upper()
-  
-# Generate Keys
 key = hexBin(key)
 key = permutation(key, permuted_1, 56)
 swap_left = key[0:28]    
 swap_right = key[28:56]   
-rkb = []
-rk  = []
+sub = []
+rnd  = []
 for i in range(0, 16):
     swap_left = leftShift(swap_left, left_shift_table[i])
     swap_right = leftShift(swap_right, left_shift_table[i])
     combine_str = swap_left + swap_right
     round_key = permutation(combine_str, permuted_2, 48)
-    rkb.append(round_key)
-    rk.append(binHex(round_key))
+    sub.append(round_key)
+    rnd.append(binHex(round_key))
+    sub_rev = sub[::-1]
+    rnd_rev = rnd[::-1]
 
 # Results
 print("Start DES Encryption")
-ciphered_text = binHex(encrypt(plainText, rkb, rk))
+ciphered_text = binHex(encryption(plainText, sub, rnd))
 print("Ciphertext: ",ciphered_text)
 print("------")  
 print("Start DES Decryption")
-rkb_rev = rkb[::-1]
-rk_rev = rk[::-1]
-plainText = binHex(encrypt(ciphered_text, rkb_rev, rk_rev))
+plainText = binHex(encryption(ciphered_text, sub_rev, rnd_rev))
 print("Plaintext: ",plainText)
 input("Press ENTER to close the window")

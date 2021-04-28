@@ -105,7 +105,6 @@ permuted_2 = [14, 17, 11, 24, 1, 5,
 print("CST 615 Group 7: Encrypting and Decrypting using DES")
 plainText = input('Please enter your plaintext: ').upper()
 key = input('Please enter your key: ').upper()
-print("\n")
 
 # Hexadecimals to Binary Form and Binary to Hexadecimal Form
 # Source https://www.rapidtables.com/convert/number/hex-to-binary.html

@@ -11,7 +11,7 @@ Once you have installed version 3.9.4 of Python, double-click the 'G-7_DES CODE'
 Option 2: A Windows Executable file was created, but could not be uploaded to BlackBoard due to an UNSUPPORTED FILE TYPE error. It can be downloaded from https://github.com/xoterin/fictional-octo-pancake
 CREDIT: Nuitka (https://nuitka.net)
 
-The 'CST615Final.exe' can only be ran on Windows. In order to run the executable, double-click the 'CST615Final' file. This will place the Python files in a temporary folder on your PC and execute the application. NOTE: This Windows executable is UNSIGNED, so the publisher is Unkwown. In the event that Windows blocks the file, please click on "More Info" and choose the option to Run Anyway.
+The 'CST615Final.exe' can only be ran on Windows. In order to run the executable, double-click the 'CST615Final' file. This will place the Python files in a temporary folder on your PC and execute the application. NOTE: This Windows executable is UNSIGNED, so the publisher is Unknown. In the event that Windows blocks the file, please click on "More Info" and choose the option to Run Anyway.
 
 INSTRUCTIONS:
 

@@ -6,7 +6,7 @@ Code written by Terin S Housey
 Option 1:
 
 To run the 'G-7_DES CODE', you will need to have Python installed. The code was written on version 3.9.4, which can be downloaded from https://python.org.
-Once you have installed version 3.9.4 of Python, double-click the 'CST 615 Code' file to execute the application. This version is compatible with MAC OS and Windows.
+Once you have installed version 3.9.4 of Python, double-click the 'G-7_DES CODE' file to execute the application. This version is compatible with MAC OS and Windows.
 
 Option 2: A Windows Executable file was created, but could not be uploaded to BlackBoard due to an UNSUPPORTED FILE TYPE error. It can be downloaded from https://github.com/xoterin/fictional-octo-pancake
 CREDIT: Nuitka (https://nuitka.net)

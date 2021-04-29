@@ -18,18 +18,23 @@ INSTRUCTIONS:
 The application was tested using Example 4.3 from the textbook (page 113).
 
 Plaintext: 02468aceeca86420
+
 Key: 0f1571c947d9e859
 
 Expected Ciphertext Result: da02ce3a89ecac3b
 
 Step One: Enter a 16 character plaintext (character range: A-F, 0-9 - not case sensitive) and press ENTER
+
 Step Two: Enter a 16 character key (character range: A-F, 0-9 - not case sensitive) and press ENTER
+
 Step Three: Review the results to verify the encrypted ciphertext and decrypted plaintext
+
 Step Four: Press ENTER to close the application
 
 ------
 
 Additional Notes:
+
 The file should not automatically close after running. You should see "Press ENTER to close". After pressing ENTER on your keyboard, the entire window should close.
 
 On Windows, the file will close if the plaintext or key is not compatible. On Mac, you should receive a key error.
